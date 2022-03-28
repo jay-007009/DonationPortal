@@ -1,0 +1,32 @@
+﻿
+using DonationPortal.DLL.NhibernetMappings;
+using FluentNHibernate.Cfg;
+using FluentNHibernate.Cfg.Db;
+using NHibernate;
+using NHibernate.Tool.hbm2ddl;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace DonationPortal
+{
+    public class NHibernateSession
+    {
+        public static ISession OpenSession()
+        {
+            ISessionFactory SessionFactory = Fluently.Configure()
+           .Database(MsSqlConfiguration.MsSql2012
+           .ConnectionString(@"Data Source=.;Initial Catalog=DonationDB;Integrated Security=True")
+           .ShowSql())
+           .Mappings(m => m.FluentMappings.AddFromAssemblyOf<FirmMap>())
+           .Mappings(m => m.FluentMappings.AddFromAssemblyOf<DonationMap>())
+           .Mappings(m => m.FluentMappings.AddFromAssemblyOf<LoginMap>())
+          // .Mappings(m => m.FluentMappings.AddFromAssemblyOf<CourierMap>())
+           .ExposeConfiguration(cfg => new SchemaExport(cfg)
+           .Create(false, false))
+           .BuildSessionFactory();
+            return SessionFactory.OpenSession();
+        }
+    }
+}

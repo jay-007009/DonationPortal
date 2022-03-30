@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DonationPortal.DLL.NhibernetMappings
 {
-    public class CityMap :ClassMap<CityDTO>
+    public class CityMap : ClassMap <CityDTO>
     {
         public CityMap()
         {

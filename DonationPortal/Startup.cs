@@ -39,6 +39,7 @@ namespace DonationPortal
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+              
             }
             else
             {

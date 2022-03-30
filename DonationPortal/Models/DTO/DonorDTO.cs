@@ -9,31 +9,31 @@ namespace DonationPortal.Models.DTO
     public class DonorDTO
     {
         [Key]
-        public int DonorId { get; set; }
+        public virtual int DonorId { get; set; }
 
         [StringLength(30), Required(ErrorMessage = "DonorName is Requires")]
-        public string DonorName { get; set; }
+        public virtual string DonorName { get; set; }
 
 
-        public decimal DonationAmount { get; set; }
+        public virtual decimal DonationAmount { get; set; }
 
 
-        public string AddressLine1 { get; set; }
+        public virtual string AddressLine1 { get; set; }
 
-        public string AddressLine2 { get; set; }
+        public virtual string AddressLine2 { get; set; }
 
      
-        public int CityId { get; set; }
+        public virtual int CityId { get; set; }
         public virtual CityDTO CityList { get; set; }
-        public int StateId { get; set; }
+        public virtual int StateId { get; set; }
         public virtual StateDTO StateList { get; set; }
-        public DateTime ModificationDate { get; set; }
+        public virtual DateTime ModificationDate { get; set; }
 
-        public int UserId { get; set; }
+        public virtual int UserId { get; set; }
       
-        public int FirmId { get; set; }
+        public virtual int FirmId { get; set; }
 
         public virtual FirmDTO FirmList { get; set; }
-        public string MobileNo { get; set; }
+        public virtual string MobileNo { get; set; }
     }
 }

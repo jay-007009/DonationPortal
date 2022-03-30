@@ -11,6 +11,18 @@ namespace DonationPortal.DLL.Interfaces
         /// <summary>
         /// Add New Firm Details
         /// </summary>
-        public string AddFirmDetails(FirmDTO firmdetails);
+        public void AddFirmDetails(FirmDTO firmdetails);
+
+      
+
+        /// <summary>
+        /// Edit Firm Details
+        /// </summary>
+        public string EditFirmDetails(int firmid, FirmDTO firmdetail);
+
+        /// <summary>
+        /// Edit Firm Details By Id
+        /// </summary>
+        public FirmDTO GetFirmById(int id);
     }
 }

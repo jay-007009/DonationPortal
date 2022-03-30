@@ -9,12 +9,12 @@ using DonationPortal.Models.DTO;
 
 namespace DonationPortal.DLL.Services
 {
-    public class Firm :IFirm
+    public class Firm : IFirm
     {
         /// <summary>
         /// Add New Firm Details
         /// </summary>
-        public string AddFirmDetails(FirmDTO firmdetails)
+        public void AddFirmDetails(FirmDTO firmdetails)
         {
             try
             {
@@ -22,19 +22,66 @@ namespace DonationPortal.DLL.Services
                 {
                     using (ITransaction transaction = session.BeginTransaction())
                     {
-                        //firmdetails.FirmId = (int)session.Save(firmdetails);
-                        //var UserId = session.Get<UserDTO>(firmdetails.UserId);
-                        //foreach (var firm in firmdetails.)
-                        //{
-                        //    firm. = newcourierOffice;
-                        //    session.Save(customer);
-                        //}
-                        session.Save(firmdetails);
+                        //UserDTO user = new UserDTO();
+                        //user.UserName = firmdetails.UserList.UserName;
+                        //user.Password = firmdetails.UserList.Password;
+                        //session.Save(user);
+                        //firmdetails.UserList.UserId = user.UserId;
                        
+
+                        session.Save(firmdetails);
+
 
                         transaction.Commit();
                     }
-                    return "Donor Details Added Successfully.";
+                  
+                }
+               
+            }
+            catch (Exception error)
+            {
+
+                throw new Exception(error.Message);
+            }
+        }
+
+
+       
+
+
+
+
+
+        /// <summary>
+        /// Edit Details of Firm Table
+        /// </summary>
+        public string EditFirmDetails(int firmid, FirmDTO firmdetail)
+        {
+            try
+            {
+                using (ISession session = NHibernateSession.OpenSession())
+                {
+                    var firmUpdate = session.Get<FirmDTO>(firmid);
+                    if (firmUpdate != null)
+                    {
+                        firmUpdate.FirmName = firmdetail.FirmName;
+                        firmUpdate.RegisterNo = firmdetail.RegisterNo;
+                        firmUpdate.RegisterDate = firmdetail.RegisterDate;
+                        firmUpdate.DonationLimit = firmdetail.DonationLimit;
+                        firmUpdate.AddressLine1 = firmdetail.AddressLine1;
+                        firmUpdate.AddressLine2 = firmdetail.AddressLine2;
+
+                        firmUpdate.CityId = firmdetail.CityId;
+                        firmUpdate.StateId = firmdetail.StateId;
+                      
+
+                        using (ITransaction transaction = session.BeginTransaction())
+                        {
+                            session.Save(firmUpdate);
+                            transaction.Commit();
+                        }
+                    }
+                    return "FirmDetails Updated Successfully.";
                 }
             }
             catch (Exception error)
@@ -42,5 +89,31 @@ namespace DonationPortal.DLL.Services
                 return error.Message;
             }
         }
+
+        /// <summary>
+        /// Fetch Particular Courier's Details By Id
+        /// </summary>
+        public FirmDTO GetFirmById(int id)
+        {
+            try
+            {
+                FirmDTO firm;
+                using (ISession session = NHibernateSession.OpenSession())
+                {
+                    using (ITransaction transaction = session.BeginTransaction())
+                    {
+                        firm = session.Get<FirmDTO>(id);
+                        transaction.Commit();
+                    }
+                    return firm;
+                }
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+        }
+
+
     }
 }

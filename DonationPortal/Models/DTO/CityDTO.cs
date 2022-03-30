@@ -6,8 +6,10 @@ namespace DonationPortal.Models.DTO
 {
    public class CityDTO
     {
-        public int StateId { get; set; }
-        public int StateName { get; set; }
-        public int CityId { get; set; }
+        public virtual int CityId { get; set; }
+        public virtual int CityName { get; set; }
+        public virtual int StateId { get; set; }
+
+        public virtual StateDTO StateList { get; set; }
     }
 }

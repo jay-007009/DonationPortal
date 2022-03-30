@@ -11,6 +11,7 @@ namespace DonationPortal.DLL.NhibernetMappings
     {
         public DonationMap()
         {
+            Table("Donor");
             Id(x => x.DonorId);
             Map(x => x.DonorName);
             Map(x => x.AddressLine1);
@@ -21,9 +22,8 @@ namespace DonationPortal.DLL.NhibernetMappings
             Map(x => x.MobileNo);
             Map(x => x.FirmId);
             References(x => x.FirmList).Column("FirmId").Fetch.Join();
-            References(x => x.CityList).Column("CityId").Fetch.Join();
-            References(x => x.StateList).Column("StateId").Fetch.Join();
-            Table("Donor");
+            //References(x => x.CityList).Column("CityId").Fetch.Join();
+            //References(x => x.StateList).Column("StateId").Fetch.Join();
         }
     }
 }

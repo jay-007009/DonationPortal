@@ -22,10 +22,21 @@ namespace DonationPortal.Controllers
 
         // POST api/<FirmController>
         [HttpPost]
-        public IActionResult Post([FromBody] FirmDTO firms)
+        public void Post([FromBody] FirmDTO firms)
         {
-            return Ok(_firmdetails.AddFirmDetails(firms));
+            _firmdetails.AddFirmDetails(firms);
+           
         }
+
+        // PUT api/<FirmController>/5
+        [HttpPut("{id}")]
+        public string Put(int id, [FromBody] FirmDTO firmdetails)
+        {
+            _firmdetails.EditFirmDetails(id, firmdetails);
+            return "Firm Update Successfully";
+        }
+
+
 
     }
 }

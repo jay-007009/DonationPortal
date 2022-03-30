@@ -1,0 +1,46 @@
+﻿@model DonationPortal.Models.DTO.UserDTO
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<h4>Login</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <b>  <label asp-for="UserName" class="control-label"></label> </b>
+                <input asp-for="UserName" class="form-control" style=" border-radius: 25px;  padding: 20px; width: 500px; height: 10px;" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <b>   <label asp-for="Password" class="control-label"></label> </b>
+                <input asp-for="Password" class="form-control" style=" border-radius: 25px;  padding: 20px; width: 500px; height: 10px;" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <input type="button" value="Submit" class="btn btn-primary" />
+            </div>
+
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

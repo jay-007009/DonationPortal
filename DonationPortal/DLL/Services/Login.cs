@@ -14,7 +14,7 @@ namespace DonationPortal.DLL.Services
         /// <summary>
         /// Fetch Login Details By Name
         /// </summary>
-        public UserDTO GetLoginDetails(string name,string pwd)
+        public UserDTO AddLoginDetails(string name,string pwd)
         {
             try
             {

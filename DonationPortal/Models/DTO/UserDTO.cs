@@ -9,14 +9,17 @@ namespace DonationPortal.Models.DTO
     public class UserDTO
     {
         [Key]
-        public int UserId { get; set; }
+        public virtual int UserId { get; set; }
 
-        [StringLength(30), Required(ErrorMessage = "UserName is Requires")]
-        public string UserName { get; set; }
+        [StringLength(30), Required(ErrorMessage = "UserName is Required")]
+        public virtual string UserName { get; set; }
 
 
-        public string Password { get; set; }
+        public virtual string Password { get; set; }
 
-        public bool IsActive { get; set; }
+        public virtual bool IsActive { get; set; }
+        public virtual ICollection<FirmDTO> firmList { get; set; }
+       
     }
+
 }

@@ -8,6 +8,6 @@ namespace DonationPortal.DLL.Interfaces
 {
     public interface ILogin
     {
-        public UserDTO GetLoginDetails(string name, string pwd);
+        public UserDTO AddLoginDetails(string name, string pwd);
     }
 }

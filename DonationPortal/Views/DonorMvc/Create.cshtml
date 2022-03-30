@@ -1,0 +1,99 @@
+﻿@model DonationPortal.Models.DTO.DonorDTO
+@{
+    ViewData["Title"] = "Create";
+}
+
+<br />
+<h3>Create Firm</h3>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+
+            <div class="form-group">
+                <b>  <label asp-for="DonorName" class="control-label"></label> </b>
+                <input asp-for="DonorName" class="form-control" style=" border-radius: 25px;  padding: 20px; width: 500px; height: 10px;" />
+                <span asp-validation-for="DonorName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <b>   <label asp-for="DonationAmount" class="control-label"></label> </b>
+                <input asp-for="DonationAmount" class="form-control" style=" border-radius: 25px;  padding: 20px; width: 500px; height: 10px;" />
+                <span asp-validation-for="DonationAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <b> <label asp-for="AddressLine1" class="control-label"></label> </b>
+                <input asp-for="AddressLine1" class="form-control" style=" border-radius: 25px;  padding: 20px; width: 500px; height: 10px;" />
+                <span asp-validation-for="AddressLine1" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <b> <label asp-for="AddressLine2" class="control-label"></label> </b>
+                <input asp-for="AddressLine2" class="form-control" style=" border-radius: 25px;  padding: 20px; width: 500px; height: 10px;" />
+                <span asp-validation-for="AddressLine2" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <b> <label asp-for="CityList.CityName" class="control-label">City</label> </b> <br />
+                <select asp-for="CityList.CityName" placeholder="Please Select Any City">
+
+                    <option>Navsari</option>
+                    <option>Surat</option>
+                    <option>Mumbai</option>
+                    <option>Bangalore</option>
+                    <option>Pune</option>
+                </select>
+                <span asp-validation-for="CityList.CityName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <b> <label asp-for="StateList.StateName" class="control-label">City</label> </b> <br />
+                <select asp-for="StateList.StateName" placeholder="Please Select Any City">
+
+                    <option>Maharastra</option>
+                    <option>Gujarat</option>
+                    <option>Karnataka</option>
+
+                </select>
+                <span asp-validation-for="StateList.StateName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <b> <label asp-for="MobileNo" class="control-label"></label> </b>
+                <input asp-for="MobileNo" class="form-control" style=" border-radius: 25px;  padding: 20px; width: 500px; height: 10px;" />
+                <span asp-validation-for="MobileNo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" /> &nbsp; &nbsp;
+
+                @*<input type="button" asp-action="Index" value="Back to List" style="border-radius: 12px; border: none;color: red; padding: 20px;
+            text-decoration: none;
+             display: inline-block;
+             font-size: 10px;
+             margin: 4px 2px;
+             cursor: pointer;" />*@
+                <a asp-action="Index" style="border-radius: 5px; border: none;color: white; padding: 10px; text-decoration: none;display: inline-block;font-size: 15px;
+  margin: 4px 2px;
+  cursor: pointer;" class="btn btn-primary">Back to List</a>
+
+
+
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

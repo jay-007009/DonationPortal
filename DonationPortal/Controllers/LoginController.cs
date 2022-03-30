@@ -21,10 +21,10 @@ namespace DonationPortal.Controllers
         }
 
         // GET api/<Login>/5
-        [HttpPut("{UserName,Pwd}")]
-        public UserDTO Get([FromRoute]string username, string pwd)
+        [HttpPost]
+        public UserDTO Get([FromBody]string username, string pwd)
         {
-            return _logindetails.GetLoginDetails(username,pwd);
+            return _logindetails.AddLoginDetails(username,pwd);
         }
 
 
